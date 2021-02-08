@@ -8,10 +8,12 @@ ${ABA_DEPARTAMENTO}      xpath=//*[@id="ui-tabpanel-2-label"]/span
 ${SELECT_DEPARTAMENTO}   xpath=//*[@id="ui-tabpanel-2"]/p-dataview/div/div[1]/p-header/div/div/div/div/input
 ${CLICK_DEPARTAMENTO}    xpath=//*[@class="ui-g-1"]
 ${ABA_FILTRO}            xpath=//html/body/app-root/div/div/app-novo-cenario/p-tabview/div/ul/li[3]
+${FILTRO_PAGINACAO}      xpath=(//*[@type="search"])[2]
 ${ABA_SIMULAÇÃO}         xpath=//*[contains(text(), "Simulação")]
 ${ABA_PROPRIEDADE}       xpath=//*[contains(text(), "Propriedades")]
 ${NOME_CENÁRIO}          xpath=//*[@formcontrolname="nomeCenario"]
-${BOX_DROPDOWNN}         xpath=(//*[@class="ui-dropdown-trigger ui-state-default ui-corner-right"])[5]
+${BOX_DROPDOWNN}         xpath=(//*[@class="ui-dropdown-trigger-icon ui-clickable pi pi-chevron-down"])[5]
+${FAIXA1}                xpath=(//*[text()="Faixa 1"])[2]
 
                                      
 *** Keywords ***
@@ -35,15 +37,17 @@ E seleciono as informações de filtros
     Capture Page Screenshot
 
 E executo a simulação
-    Sleep      20   
-    Click Element   ${ABA_SIMULAÇÃO}
-    Sleep      20   
+    #Wait Until Element Is Visible     ${FILTRO_PAGINACAO}    10
+    sleep    10 
+    Click Element                     ${ABA_SIMULAÇÃO}
+    Wait Until Element Is Visible     ${BOX_DROPDOWNN}       10   
     Capture Page Screenshot
 
 Então o cenário é criado
-    Click Element               ${ABA_PROPRIEDADE}
-    Input Text                  ${NOME_CENÁRIO}         LUIGI_TESTE_DEMARCAÇÃO
-    Click Element               ${BOX_DROPDOWNN}        
-    Click Element               xpath=//*[@id="ui-tabpanel-0"]/div[3]/app-simulacao/p-treetable/div/div/div[2]/div[2]/table/tbody/tr/td[1]/div/p-dropdown/div/div[4]/div/ul/li[3]
+    Click Element                    ${ABA_PROPRIEDADE}
+    Input Text                       ${NOME_CENÁRIO}      LUIGI_TESTE_DEMARCAÇÃO
+    Click Element                    ${BOX_DROPDOWNN}
+    Wait Until Element Is Visible    ${BOX_DROPDOWNN} 
+    Click Element                    ${FAIXA1}     
     
     
