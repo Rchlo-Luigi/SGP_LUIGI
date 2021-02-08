@@ -47,7 +47,7 @@ Então o cenário é criado
     Click Element                    ${ABA_PROPRIEDADE}
     Input Text                       ${NOME_CENÁRIO}      LUIGI_TESTE_DEMARCAÇÃO
     Click Element                    ${BOX_DROPDOWNN}
-    Wait Until Element Is Visible    ${BOX_DROPDOWNN} 
+    Wait Until Element Is Visible    ${FAIXA1}        10 
     Click Element                    ${FAIXA1}     
     
     
