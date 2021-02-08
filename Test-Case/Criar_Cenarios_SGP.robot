@@ -12,7 +12,5 @@ Cenário 1: Criar Cenário por Departamento
     Quando seleciono as informações do departamento
     E seleciono as informações de filtros
     E executo a simulação
-
-    
-#Então o cenário é criado
+    Então o cenário é criado
 
