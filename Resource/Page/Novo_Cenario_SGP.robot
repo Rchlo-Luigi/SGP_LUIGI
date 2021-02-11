@@ -14,6 +14,7 @@ ${ABA_PROPRIEDADE}       xpath=//*[contains(text(), "Propriedades")]
 ${NOME_CENÁRIO}          xpath=//*[@formcontrolname="nomeCenario"]
 ${BOX_DROPDOWNN}         xpath=(//*[@class="ui-dropdown-trigger-icon ui-clickable pi pi-chevron-down"])[5]
 ${FAIXA1}                xpath=(//*[text()="Faixa 1"])[2]
+${BOTAO_SALVAR}          xpath=(//*[contains(text(),"Salvar")])[2]
 
                                      
 *** Keywords ***
@@ -46,6 +47,7 @@ E executo a simulação
 Então o cenário é criado
     Click Element                    ${ABA_PROPRIEDADE}
     Input Text                       ${NOME_CENÁRIO}      LUIGI_TESTE_DEMARCAÇÃO
+    Scroll Element Into View         ${BOTAO_SALVAR} 
     Click Element                    ${BOX_DROPDOWNN}
     Wait Until Element Is Visible    ${FAIXA1}        10 
     Click Element                    ${FAIXA1}     
