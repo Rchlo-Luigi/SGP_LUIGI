@@ -14,6 +14,7 @@ ${ABA_PROPRIEDADE}       xpath=//*[contains(text(), "Propriedades")]
 ${NOME_CENÁRIO}          xpath=//*[@formcontrolname="nomeCenario"]
 ${BOX_DROPDOWNN}         xpath=(//*[@class="ui-dropdown-trigger-icon ui-clickable pi pi-chevron-down"])[5]
 ${FAIXA1}                xpath=(//*[text()="Faixa 1"])[2]
+${MATERIAIS_COM_FAIXA1}  xpath=//html/body/app-root/div/div/app-novo-cenario/p-dialog[2]/div/div[3]/p-footer/button
 ${BOTAO_SALVAR}          xpath=(//*[contains(text(),"Salvar")])[2]
 
                                      
@@ -25,31 +26,34 @@ Dado que estou na tela de novo cenário
     Click Element   ${NOVO_CENARIO}
     Capture Page Screenshot
 
-Quando seleciono as informações do departamento
+Quando seleciono as informações do departamento ${DCO} 
     Click Element   ${ABA_DEPARTAMENTO}
-    Input Text      ${SELECT_DEPARTAMENTO}          220
+    Input Text      ${SELECT_DEPARTAMENTO}  ${DCO} 
     Click Element   ${CLICK_DEPARTAMENTO}
-    Set Browser Implicit Wait     20 
+    Set Browser Implicit Wait  20 
     Capture Page Screenshot
 
 E seleciono as informações de filtros
     Click Element   ${ABA_FILTRO} 
-    Set Browser Implicit Wait     10 
+    Set Browser Implicit Wait  20 
     Capture Page Screenshot
 
 E executo a simulação
     #Wait Until Element Is Visible     ${FILTRO_PAGINACAO}    10
-    sleep    10 
+    sleep  10 
     Click Element                     ${ABA_SIMULAÇÃO}
-    Wait Until Element Is Visible     ${BOX_DROPDOWNN}       10   
+    Wait Until Element Is Visible     ${BOX_DROPDOWNN}  20   
     Capture Page Screenshot
 
 Então o cenário é criado
     Click Element                    ${ABA_PROPRIEDADE}
-    Input Text                       ${NOME_CENÁRIO}      LUIGI_TESTE_DEMARCAÇÃO
+    Input Text                       ${NOME_CENÁRIO}  TESTE_ROBOT_LUIGI_NOVO
     Scroll Element Into View         ${BOTAO_SALVAR} 
     Click Element                    ${BOX_DROPDOWNN}
-    Wait Until Element Is Visible    ${FAIXA1}        10 
-    Click Element                    ${FAIXA1}     
-    
+    Wait Until Element Is Visible    ${FAIXA1}  20 
+    Click Element                    ${FAIXA1}   
+    Wait Until Element Is Visible    ${MATERIAIS_COM_FAIXA1}  20
+    Click Element                    ${MATERIAIS_COM_FAIXA1}   
+    Wait Until Element Is Visible    ${BOTAO_SALVAR}  60
+    Click Element                    ${BOTAO_SALVAR}
     

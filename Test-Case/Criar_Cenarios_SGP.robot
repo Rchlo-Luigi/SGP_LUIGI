@@ -9,7 +9,7 @@ Test Teardown   Fechar navegador
 *** Test Case ***
 Cenário 1: Criar Cenário por Departamento
     Dado que estou na tela de novo cenário
-    Quando seleciono as informações do departamento
+    Quando seleciono as informações do departamento 220 
     E seleciono as informações de filtros
     E executo a simulação
     Então o cenário é criado
